@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
       - name: tea-ace-demo
-        image: tdolby/experimental:tea-github-action-crane-20241122004459-050e41a
+        image: tdolby/experimental:tea-github-action-crane-20241122005023-bda1644
