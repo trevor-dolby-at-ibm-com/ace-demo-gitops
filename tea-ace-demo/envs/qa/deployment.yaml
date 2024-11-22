@@ -10,3 +10,5 @@ spec:
         env:
         - name: ENV
           value: "qa"
+        - name: LICENSE
+          value: "accept"

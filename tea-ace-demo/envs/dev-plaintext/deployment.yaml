@@ -10,3 +10,5 @@ spec:
         env:
         - name: ENV
           value: "dev-plaintext"
+        - name: LICENSE
+          value: "accept"

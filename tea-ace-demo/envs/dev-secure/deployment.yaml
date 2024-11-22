@@ -10,3 +10,5 @@ spec:
         env:
         - name: ENV
           value: "dev-secure"
+        - name: LICENSE
+          value: "accept"
