@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tea-ace-demo
+spec:
+  template:
+    spec:
+      containers:
+      - name: tea-ace-demo
+        env:
+        - name: ENV
+          value: "dev-plaintext"

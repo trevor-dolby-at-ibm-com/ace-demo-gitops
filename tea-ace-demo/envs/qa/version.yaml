@@ -1,0 +1,11 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tea-ace-demo
+spec:
+  template:
+    spec:
+      containers:
+      - name: tea-ace-demo
+        image: tdolby/experimental:tea-github-action-crane-20241121235131-eb7b506
