@@ -27,3 +27,4 @@ else
     scripts/promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${commit}
   done
 fi
+
