@@ -37,3 +37,4 @@ for yamlFile in $YAMLFILES; do
     set +e
   fi
 done
+
