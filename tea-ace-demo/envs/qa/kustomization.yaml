@@ -16,3 +16,4 @@ components:
 patchesStrategicMerge:
 - deployment.yaml
 #- version.yaml
+
