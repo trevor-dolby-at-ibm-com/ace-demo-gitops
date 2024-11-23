@@ -16,7 +16,11 @@ git add .
 git status
 git commit -s -m "$MSG"
 # Check to see if anything changed
-if [ `git status --porcelain=1 | grep generated | wc -l` -ne 0 ]; then
+if [[ $(git status -s | wc -l) -eq 0 ]]; then
+  echo "########################################################################"
+  echo "# Nothing new generated - not creating a new git commit"
+  echo "########################################################################"
+else
   echo "########################################################################"
   echo "# Generated files changed - creating and pushing git commit:"
   echo "# \"$MSG\""
@@ -26,9 +30,4 @@ if [ `git status --porcelain=1 | grep generated | wc -l` -ne 0 ]; then
   git status
   git commit -s -m "$MSG"
   git push origin $BRANCH
-
-else
-  echo "########################################################################"
-  echo "# Nothing new generated - not creating a new git commit"
-  echo "########################################################################"
 fi
