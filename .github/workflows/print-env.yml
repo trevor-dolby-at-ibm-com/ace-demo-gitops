@@ -32,5 +32,9 @@ jobs:
           echo "Calling scan-commits-for-image-changes.sh"
           scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH}
           echo "Calling push-changes-to-new-branch.sh"
+          
+          git config --global user.email "trevor.dolby@ibm.com"
+          git config --global user.name "Trevor Dolby (automation)"
+          
           scripts/push-changes-to-new-branch.sh qa
           
