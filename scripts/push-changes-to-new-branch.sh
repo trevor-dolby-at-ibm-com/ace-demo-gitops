@@ -2,6 +2,7 @@
 
 
 export destEnv=$1
+export destDirectory=$2
 
 if [ "$destEnv" == "" ]; then
    echo "Need valid dest env"
@@ -11,6 +12,7 @@ fi
 export DATE=$(date '+%Y%m%d%H%M%S')
 export TAG="$DATE"
 export MSG="Generator commit $TAG"
+cd ${destDirectory}
 git add . 
 git status
 # Check to see if anything changed
