@@ -30,8 +30,6 @@ jobs:
           echo ${GITHUB_EVENT_PATH} contents
           cat ${GITHUB_EVENT_PATH}
 
-          mkdir gitops_cd
-          cd gitops_cd
           git config --global user.email "trevor.dolby@ibm.com"
           git config --global user.name "Trevor Dolby (automation)"
           git config --global --add --bool push.autoSetupRemote true
@@ -49,12 +47,15 @@ jobs:
           echo "########################################################################"
           echo ${{ secrets.GITOPS_GH_TOKEN }} | gh auth login --with-token
           gh auth setup-git
+          mkdir gitops_cd
+          cd gitops_cd
           git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
+          cd ..
           export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
 
           echo "Calling scan-commits-for-image-changes.sh"
-          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} $REPO_NAME
-          cd $REPO_NAME
+          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME
+          cd gitops_cd/$REPO_NAME
           echo "Calling push-changes-to-new-branch.sh"
           scripts/push-changes-to-new-branch.sh qa
           
