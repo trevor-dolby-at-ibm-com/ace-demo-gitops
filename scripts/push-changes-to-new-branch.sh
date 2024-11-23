@@ -8,6 +8,9 @@ if [ "$destEnv" == "" ]; then
    exit 1
 fi 
 
+git add . 
+git status
+git commit -s -m "$MSG"
 # Check to see if anything changed
 if [ `git status --porcelain=1 | grep generated | wc -l` -ne 0 ]; then
   export DATE=$(date '+%Y%m%d%H%M%S')
@@ -18,9 +21,6 @@ if [ `git status --porcelain=1 | grep generated | wc -l` -ne 0 ]; then
   echo "# Generated files changed - creating and pushing git commit:"
   echo "# \"$MSG\""
   echo "########################################################################"
-  git add . 
-  git status
-  git commit -s -m "$MSG"
   git checkout -b $BRANCH
   git add . 
   git status
