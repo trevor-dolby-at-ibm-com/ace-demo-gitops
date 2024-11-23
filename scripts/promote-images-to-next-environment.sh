@@ -4,7 +4,7 @@
 export sourceEnv=$1
 export destEnv=$2
 export gitCommit=$3
-export sourceDirectory=$4
+export destDirectory=$4
 
 if [ "$sourceEnv" == "" ]; then
    echo "Need valid source env"
@@ -26,16 +26,16 @@ export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}")
 
 for yamlFile in $YAMLFILES; do
   # Make sure there's at least one match
-  [ -e "${sourceDirectory}/${yamlFile}" ] || continue
+  [ -e "${yamlFile}" ] || continue
 
-  export imageName=$(yq '.images[0].newName' ${sourceDirectory}/${yamlFile})
+  export imageName=$(yq '.images[0].newName' ${yamlFile})
   if [ "$imageName" == "null" ]; then
     echo "$yamlFile does not contain an image reference"
   else
-    export imageTag=$(yq '.images[0].newTag' ${sourceDirectory}/${yamlFile})
+    export imageTag=$(yq '.images[0].newTag' ${yamlFile})
     export parentDirPath=$(echo $(dirname $yamlFile) | sed "s|/${sourceEnv}|\n|g" | head -n 1)
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
-    export destEnvYamlFile="${parentDirPath}/${destEnv}/${modifiedFilePath}"
+    export destEnvYamlFile="${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath}"
     echo "########################################################################"
     echo "# Changing image reference to ${imageName}:${imageTag} in $destEnvYamlFile"
     echo "########################################################################"
