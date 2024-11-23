@@ -23,4 +23,8 @@ jobs:
         run: |
           echo "Environment"
           env | sort
+          echo "github.event.push.size"
+          echo ${{ github.event.push.size }}
+          echo "github.event.push.distinct_size"
+          echo ${{ github.event.push.distinct_size }}
           
