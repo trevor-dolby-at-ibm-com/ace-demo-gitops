@@ -40,20 +40,21 @@ jobs:
           if [ "$BRANCH_NAME" == "" ]; then
             export BRANCH_NAME="$GITHUB_REF_NAME"
           fi
+          export DEST_BRANCH="autoPr/tea-ace-demo/$destEnv"
 
           echo "########################################################################"
           echo "# Cloning a new copy of the repo using the correct credentials"
           echo "# Repo    ${GITHUB_REPOSITORY}"
-          echo "# Branch  ${BRANCH_NAME}"
+          echo "# Branch  ${DEST_BRANCH_NAME}"
           echo "########################################################################"
           echo ${{ secrets.GITOPS_GH_TOKEN }} | gh auth login --with-token
           gh auth setup-git
-          git clone --depth 20 -b ${BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
+          git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
           export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
           cd $REPO_NAME
 
           echo "Calling scan-commits-for-image-changes.sh"
-          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH}
+          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} ..
           echo "Calling push-changes-to-new-branch.sh"
           scripts/push-changes-to-new-branch.sh qa
           
