@@ -17,10 +17,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-        #with:
+        with:
           # Number of commits to fetch. 0 indicates all history for all branches and tags.
           # Default: 1
-          #fetch-depth: '20'
+          fetch-depth: '20'
           
       - name: Print environment
         shell: bash
@@ -51,10 +51,10 @@ jobs:
           gh auth setup-git
           git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
           export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
-          cd $REPO_NAME
 
           echo "Calling scan-commits-for-image-changes.sh"
-          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} ..
+          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} $REPO_NAME
+          cd $REPO_NAME
           echo "Calling push-changes-to-new-branch.sh"
           scripts/push-changes-to-new-branch.sh qa
           
