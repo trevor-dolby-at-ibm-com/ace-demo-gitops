@@ -4,9 +4,14 @@ kind: Kustomization
 resources:
 - ../../base
 
+images:
+  - name: image-placeholder
+    newName: tdolby/experimental
+    newTag: tea-github-action-crane-20241122005023-bda1644
+
 components:
   - ../../variants/plaintext
 
 patchesStrategicMerge:
 - deployment.yaml
-- version.yaml
+#- version.yaml

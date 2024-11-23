@@ -18,7 +18,8 @@ spec:
         secret:
           secretName: jdbc-secret
       containers:
-      - image: placeholder
+      - image: >-
+          image-placeholder
         name: tea-ace-demo
         ports:
         - containerPort: 7800
