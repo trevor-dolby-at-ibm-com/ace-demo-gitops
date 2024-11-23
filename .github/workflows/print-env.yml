@@ -55,7 +55,6 @@ jobs:
 
           echo "Calling scan-commits-for-image-changes.sh"
           scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME
-          cd gitops_cd/$REPO_NAME
           echo "Calling push-changes-to-new-branch.sh"
-          scripts/push-changes-to-new-branch.sh qa
+          scripts/push-changes-to-new-branch.sh qa gitops_cd/$REPO_NAME
           
