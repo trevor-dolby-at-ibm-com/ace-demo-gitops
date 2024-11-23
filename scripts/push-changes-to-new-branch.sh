@@ -11,7 +11,6 @@ fi
 export DATE=$(date '+%Y%m%d%H%M%S')
 export TAG="$DATE"
 export MSG="Generator commit $TAG"
-export BRANCH="autoPr/tea-ace-demo/$destEnv"
 git add . 
 git status
 # Check to see if anything changed
@@ -22,13 +21,10 @@ if [[ $(git status -s | wc -l) -eq 0 ]]; then
 else
   echo "########################################################################"
   echo "# Generated files changed - creating and pushing git commit"
-  echo "# \"$MSG\" to branch $BRANCH"
+  echo "# \"$MSG\" to branch $DEST_BRANCH"
   echo "########################################################################"
-  git checkout $BRANCH 2>/dev/null || git checkout -b $BRANCH
-  git add . 
-  git status
   git commit -s -m "$MSG"
-  git push origin $BRANCH
+  git push origin $DEST_BRANCH
 
   echo "########################################################################"
   echo "# Creating or updating PR"

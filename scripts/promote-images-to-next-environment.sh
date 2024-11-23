@@ -4,7 +4,7 @@
 export sourceEnv=$1
 export destEnv=$2
 export gitCommit=$3
-
+export sourceDirectory=$4
 
 if [ "$sourceEnv" == "" ]; then
    echo "Need valid source env"
@@ -26,13 +26,13 @@ export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}")
 
 for yamlFile in $YAMLFILES; do
   # Make sure there's at least one match
-  [ -e "$yamlFile" ] || continue
+  [ -e "${sourceDirectory}/${yamlFile}" ] || continue
 
-  export imageName=$(yq '.images[0].newName' $yamlFile)
+  export imageName=$(yq '.images[0].newName' ${sourceDirectory}/${yamlFile})
   if [ "$imageName" == "null" ]; then
     echo "$yamlFile does not contain an image reference"
   else
-    export imageTag=$(yq '.images[0].newTag' $yamlFile)
+    export imageTag=$(yq '.images[0].newTag' ${sourceDirectory}/${yamlFile})
     export parentDirPath=$(echo $(dirname $yamlFile) | sed "s|/${sourceEnv}|\n|g" | head -n 1)
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
     export destEnvYamlFile="${parentDirPath}/${destEnv}/${modifiedFilePath}"
