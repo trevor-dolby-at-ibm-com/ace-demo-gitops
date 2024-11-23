@@ -14,7 +14,6 @@ export MSG="Generator commit $TAG"
 export BRANCH="autoPr/tea-ace-demo/$destEnv"
 git add . 
 git status
-git commit -s -m "$MSG"
 # Check to see if anything changed
 if [[ $(git status -s | wc -l) -eq 0 ]]; then
   echo "########################################################################"
