@@ -6,6 +6,18 @@ export destEnv=$2
 export gitCommit=$3
 
 
+if [ "$sourceEnv" == "" ]; then
+   echo "Need valid source env"
+   exit 1
+fi 
+if [ "$destEnv" == "" ]; then
+   echo "Need valid dest env"
+   exit 1
+fi 
+if [ "$gitCommit" == "" ]; then
+   echo "Need valid gitCommit"
+   exit 1
+fi 
 
 echo "########################################################################"
 echo "# Scanning for changes in ${sourceEnv} YAML to propagate to ${destEnv}"
