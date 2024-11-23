@@ -40,7 +40,7 @@ jobs:
           if [ "$BRANCH_NAME" == "" ]; then
             export BRANCH_NAME="$GITHUB_REF_NAME"
           fi
-          export DEST_BRANCH="autoPr/tea-ace-demo/$destEnv"
+          export DEST_BRANCH_NAME="autoPr/tea-ace-demo/$destEnv"
 
           echo "########################################################################"
           echo "# Cloning a new copy of the repo using the correct credentials"

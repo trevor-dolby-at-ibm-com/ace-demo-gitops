@@ -21,10 +21,10 @@ if [[ $(git status -s | wc -l) -eq 0 ]]; then
 else
   echo "########################################################################"
   echo "# Generated files changed - creating and pushing git commit"
-  echo "# \"$MSG\" to branch $DEST_BRANCH"
+  echo "# \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "########################################################################"
   git commit -s -m "$MSG"
-  git push origin $DEST_BRANCH
+  git push origin $DEST_BRANCH_NAME
 
   echo "########################################################################"
   echo "# Creating or updating PR"
