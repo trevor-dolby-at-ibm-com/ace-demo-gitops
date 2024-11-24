@@ -6,7 +6,7 @@ images:
   - name: image-placeholder
     newName: tdolby/experimental
     #newTag: tea-github-action-crane-20241122004459-050e41a
-    newTag: tea-github-action-crane-20241122004459-050e41a
+    newTag: tea-github-action-crane-20241122004459-050e41c
 components:
   - ../../variants/secure
 patchesStrategicMerge:
