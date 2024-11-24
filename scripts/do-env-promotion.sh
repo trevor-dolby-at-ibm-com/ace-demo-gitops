@@ -42,6 +42,7 @@ cd gitops_cd
 git clone --depth 20 https://github.com/${GITHUB_REPOSITORY}
 cd $REPO_NAME
 git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
+git pull
 cd ../..
 
 echo "#  #######################################################################"
