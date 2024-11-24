@@ -3,8 +3,9 @@
 
 export sourceEnv=$1
 export destEnv=$2
-export githubPushEventJson=$3
-export destDirectory=$4
+export applicationName=$3
+export githubPushEventJson=$4
+export destDirectory=$5
 
 
 if [ "$githubPushEventJson" == "" ]; then
@@ -25,7 +26,7 @@ else
     echo "########################################################################"
     echo "# Checking commit ${commit} for changes to image tags"
     echo "########################################################################"
-    scripts/promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${commit} ${destDirectory}
+    scripts/promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${applicationName} ${commit} ${destDirectory}
   done
 fi
 

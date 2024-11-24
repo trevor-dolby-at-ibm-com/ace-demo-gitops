@@ -3,8 +3,9 @@
 
 export sourceEnv=$1
 export destEnv=$2
-export gitCommit=$3
-export destDirectory=$4
+export applicationName=$3
+export gitCommit=$4
+export destDirectory=$5
 
 if [ "$sourceEnv" == "" ]; then
    echo "Need valid source env"
@@ -20,9 +21,12 @@ if [ "$gitCommit" == "" ]; then
 fi 
 
 echo "########################################################################"
-echo "# Scanning for changes in ${sourceEnv} YAML to propagate to ${destEnv}"
+echo "# Scanning for image changes in YAML"
+echo "# applicationName: $applicationName"
+echo "# sourceEnv: ${sourceEnv}"
+echo "# destEnv: ${destEnv}"
 echo "########################################################################"
-export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}")
+export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}" | grep "/${applicationName}/")
 
 for yamlFile in $YAMLFILES; do
   # Make sure there's at least one match

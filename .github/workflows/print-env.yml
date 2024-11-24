@@ -2,10 +2,6 @@ name: Print Env
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -29,32 +25,3 @@ jobs:
           env | sort
           echo ${GITHUB_EVENT_PATH} contents
           cat ${GITHUB_EVENT_PATH}
-
-          git config --global user.email "trevor.dolby@ibm.com"
-          git config --global user.name "Trevor Dolby (automation)"
-          git config --global --add --bool push.autoSetupRemote true
-
-          export BRANCH_NAME=${GITHUB_HEAD_REF}
-          if [ "$BRANCH_NAME" == "" ]; then
-            export BRANCH_NAME="$GITHUB_REF_NAME"
-          fi
-          export DEST_BRANCH_NAME="autoPr/tea-ace-demo/qa"
-
-          echo "########################################################################"
-          echo "# Cloning a new copy of the repo using the correct credentials"
-          echo "# Repo    ${GITHUB_REPOSITORY}"
-          echo "# Branch  ${DEST_BRANCH_NAME}"
-          echo "########################################################################"
-          echo ${{ secrets.GITOPS_GH_TOKEN }} | gh auth login --with-token
-          gh auth setup-git
-          mkdir gitops_cd
-          cd gitops_cd
-          git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
-          cd ..
-          export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
-
-          echo "Calling scan-commits-for-image-changes.sh"
-          scripts/scan-commits-for-image-changes.sh dev-plaintext qa ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME
-          echo "Calling push-changes-to-new-branch.sh"
-          scripts/push-changes-to-new-branch.sh qa gitops_cd/$REPO_NAME
-          

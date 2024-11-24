@@ -31,3 +31,8 @@ jobs:
           env | sort
           echo ${GITHUB_EVENT_PATH} contents
           cat ${GITHUB_EVENT_PATH}
+          echo "########################################################################"
+          echo "# Calling scripts/scan-commits-for-image-changes.sh "
+          echo "#   ${sourceEnv} ${destEnv} ${applicationName}"
+          echo "########################################################################"
+          scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${applicationName}
