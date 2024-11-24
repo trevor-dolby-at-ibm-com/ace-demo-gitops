@@ -42,7 +42,8 @@ for yamlFile in $YAMLFILES; do
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
     export destEnvYamlFile="${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath}"
     echo "#      #######################################################################"
-    echo "#       Changing image reference to ${imageName}:${imageTag} in $destEnvYamlFile"
+    echo "#       Changing image reference to ${imageName}:${imageTag}"
+    echo "#       in $destEnvYamlFile"
     echo "#      #######################################################################"
     echo "Previous image in ${destEnvYamlFile}:"
     yq '.images[0]' $destEnvYamlFile
