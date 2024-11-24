@@ -12,6 +12,7 @@ fi
 export DATE=$(date '+%Y%m%d%H%M%S')
 export TAG="$DATE"
 export MSG="Generator commit $TAG"
+set -e
 cd ${destDirectory}
 git add . 
 git status
@@ -25,6 +26,7 @@ else
   echo "#     Generated files changed - creating and pushing git commit"
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
+
   git commit -s -m "$MSG"
   git push origin $DEST_BRANCH_NAME
 
