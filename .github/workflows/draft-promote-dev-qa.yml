@@ -24,7 +24,7 @@ jobs:
           # Default: 1
           fetch-depth: '20'
           
-      - name: Print environment
+      - name: Promote dev-plaintext to QA
         shell: bash
         run: |
           echo "Environment"
@@ -32,7 +32,7 @@ jobs:
           echo ${GITHUB_EVENT_PATH} contents
           cat ${GITHUB_EVENT_PATH}
           echo "########################################################################"
-          echo "# Calling scripts/scan-commits-for-image-changes.sh "
-          echo "#   ${sourceEnv} ${destEnv} ${applicationName}"
+          echo "# Calling scripts/do-env-promotion.sh"
+          echo "#   dev-plaintext qa tea-ace-demo"
           echo "########################################################################"
-          scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${applicationName}
+          scripts/do-env-promotion.sh dev-plaintext qa tea-ace-demo
