@@ -33,6 +33,6 @@ jobs:
           cat ${GITHUB_EVENT_PATH}
           echo "########################################################################"
           echo "# Calling scripts/do-env-promotion.sh"
-          echo "#   dev-plaintext qa tea-ace-demo"
+          echo "#   dev-plaintext qa tea-ace-demo <GITOPS_GH_TOKEN>"
           echo "########################################################################"
-          scripts/do-env-promotion.sh dev-plaintext qa tea-ace-demo
+          scripts/do-env-promotion.sh dev-plaintext qa tea-ace-demo ${{ secrets.GITOPS_GH_TOKEN }}

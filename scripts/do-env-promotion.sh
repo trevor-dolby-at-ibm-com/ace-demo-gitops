@@ -4,6 +4,7 @@
 export sourceEnv=$1
 export destEnv=$2
 export applicationName=$3
+export ghToken=$4
 
 if [ "$sourceEnv" == "" ]; then
    echo "Need valid source env"
@@ -33,7 +34,7 @@ echo "# Cloning a new copy of the repo using the correct credentials"
 echo "# Repo    ${GITHUB_REPOSITORY}"
 echo "# Branch  ${DEST_BRANCH_NAME}"
 echo "########################################################################"
-echo ${{ secrets.GITOPS_GH_TOKEN }} | gh auth login --with-token
+echo $ghToken | gh auth login --with-token
 gh auth setup-git
 mkdir gitops_cd
 cd gitops_cd
