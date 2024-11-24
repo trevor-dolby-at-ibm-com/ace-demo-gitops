@@ -29,6 +29,7 @@ if [ "$BRANCH_NAME" == "" ]; then
 fi
 export DEST_BRANCH_NAME="autoPr/${applicationName}/${destEnv}"
 
+export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
 echo "#  #######################################################################"
 echo "#   Cloning a new copy of the repo using the correct credentials"
 echo "#   Repo    ${GITHUB_REPOSITORY}"
@@ -38,9 +39,10 @@ echo $ghToken | gh auth login --with-token
 gh auth setup-git
 mkdir gitops_cd
 cd gitops_cd
-git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITORY}
-cd ..
-export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
+git clone --depth 20 https://github.com/${GITHUB_REPOSITORY}
+cd $REPO_NAME
+git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
+cd ../..
 
 echo "#  #######################################################################"
 echo "#   Calling scan-commits-for-image-changes.sh"
