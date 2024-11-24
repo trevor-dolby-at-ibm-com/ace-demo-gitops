@@ -25,8 +25,9 @@ else
   echo "#     Generated files changed - creating and pushing git commit"
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
+  set -x
   git commit -s -m "$MSG"
-  git pull
+  git push
   git push origin $DEST_BRANCH_NAME
 
   echo "#    #######################################################################"
