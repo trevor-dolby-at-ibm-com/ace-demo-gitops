@@ -32,5 +32,5 @@ else
   echo "#     Creating or updating PR"
   echo "#    #######################################################################"
   gh pr list
-  gh pr create --base main --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"
+  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"  --draft || gh pr edit --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"
 fi
