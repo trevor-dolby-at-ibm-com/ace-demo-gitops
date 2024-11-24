@@ -39,7 +39,7 @@ echo $ghToken | gh auth login --with-token
 gh auth setup-git
 mkdir gitops_cd
 cd gitops_cd
-git clone --depth 20 https://github.com/${GITHUB_REPOSITORY}
+git clone https://github.com/${GITHUB_REPOSITORY}
 cd $REPO_NAME
 git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
 git pull
