@@ -13,9 +13,9 @@ if [ "$githubPushEventJson" == "" ]; then
    exit 1
 fi 
 
-echo "########################################################################"
-echo "# Looking for commits to check for image tag updates from ${sourceEnv} to ${destEnv} "
-echo "########################################################################"
+echo "#    #######################################################################"
+echo "#     Looking for commits to check for image tag updates from ${sourceEnv} to ${destEnv} "
+echo "#    #######################################################################"
 export COMMITS=$(jq '.commits[].id' ${githubPushEventJson} | tr -d '"')
 
 if [ "$COMMITS" == "" ]; then
@@ -23,9 +23,9 @@ if [ "$COMMITS" == "" ]; then
    cat ${githubPushEventJson}
 else
   for commit in $COMMITS; do
-    echo "########################################################################"
-    echo "# Checking commit ${commit} for changes to image tags"
-    echo "########################################################################"
+    echo "#    #######################################################################"
+    echo "#     Checking commit ${commit} for changes to image tags"
+    echo "#    #######################################################################"
     scripts/promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${applicationName} ${commit} ${destDirectory}
   done
 fi

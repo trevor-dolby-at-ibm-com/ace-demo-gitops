@@ -20,13 +20,14 @@ if [ "$gitCommit" == "" ]; then
    exit 1
 fi 
 
-echo "########################################################################"
-echo "# Scanning for image changes in YAML"
-echo "# applicationName: $applicationName"
-echo "# sourceEnv: ${sourceEnv}"
-echo "# destEnv: ${destEnv}"
-echo "########################################################################"
-export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}" | grep "/${applicationName}/")
+echo "#      #######################################################################"
+echo "#       Scanning for image changes in YAML"
+echo "#       applicationName: $applicationName"
+echo "#       sourceEnv: ${sourceEnv}"
+echo "#       destEnv: ${destEnv}"
+echo "#      #######################################################################"
+git show --name-only "${gitCommit}" 
+export YAMLFILES=$(git show --name-only "${gitCommit}" | grep "/${sourceEnv}" | grep "${applicationName}")
 
 for yamlFile in $YAMLFILES; do
   # Make sure there's at least one match
@@ -40,9 +41,9 @@ for yamlFile in $YAMLFILES; do
     export parentDirPath=$(echo $(dirname $yamlFile) | sed "s|/${sourceEnv}|\n|g" | head -n 1)
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
     export destEnvYamlFile="${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath}"
-    echo "########################################################################"
-    echo "# Changing image reference to ${imageName}:${imageTag} in $destEnvYamlFile"
-    echo "########################################################################"
+    echo "#      #######################################################################"
+    echo "#       Changing image reference to ${imageName}:${imageTag} in $destEnvYamlFile"
+    echo "#      #######################################################################"
     echo "Previous image in ${destEnvYamlFile}:"
     yq '.images[0]' $destEnvYamlFile
     set -e

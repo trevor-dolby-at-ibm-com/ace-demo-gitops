@@ -29,11 +29,11 @@ if [ "$BRANCH_NAME" == "" ]; then
 fi
 export DEST_BRANCH_NAME="autoPr/${applicationName}/${destEnv}"
 
-echo "########################################################################"
-echo "# Cloning a new copy of the repo using the correct credentials"
-echo "# Repo    ${GITHUB_REPOSITORY}"
-echo "# Branch  ${DEST_BRANCH_NAME}"
-echo "########################################################################"
+echo "#  #######################################################################"
+echo "#   Cloning a new copy of the repo using the correct credentials"
+echo "#   Repo    ${GITHUB_REPOSITORY}"
+echo "#   Branch  ${DEST_BRANCH_NAME}"
+echo "#  #######################################################################"
 echo $ghToken | gh auth login --with-token
 gh auth setup-git
 mkdir gitops_cd
@@ -42,13 +42,13 @@ git clone --depth 20 -b ${DEST_BRANCH_NAME} https://github.com/${GITHUB_REPOSITO
 cd ..
 export REPO_NAME=$(basename `echo $GITHUB_REPOSITORY`)
 
-echo "########################################################################"
-echo "# Calling scan-commits-for-image-changes.sh"
-echo "#   ${sourceEnv} ${destEnv} ${applicationName} ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME"
-echo "########################################################################"
+echo "#  #######################################################################"
+echo "#   Calling scan-commits-for-image-changes.sh"
+echo "#     ${sourceEnv} ${destEnv} ${applicationName} ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME"
+echo "#  #######################################################################"
 scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${applicationName} ${GITHUB_EVENT_PATH} gitops_cd/$REPO_NAME
-echo "########################################################################"
-echo "# Calling push-changes-to-new-branch.sh"
-echo "#   ${destEnv} gitops_cd/$REPO_NAME"
-echo "########################################################################"
+echo "#  #######################################################################"
+echo "#   Calling push-changes-to-new-branch.sh"
+echo "#     ${destEnv} gitops_cd/$REPO_NAME"
+echo "#  #######################################################################"
 scripts/push-changes-to-new-branch.sh ${destEnv} gitops_cd/$REPO_NAME
