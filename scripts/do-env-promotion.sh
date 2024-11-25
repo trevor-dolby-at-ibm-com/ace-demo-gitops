@@ -29,6 +29,15 @@ echo "#  #######################################################################
 mkdir -p gitops_cd/changed-files
 scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${GITHUB_EVENT_PATH} gitops_cd/changed-files
 
+# At this point, the scan-commits-for-image-changes.sh will have created files
+# of the form commits-for-APPNAME that contain the list of git commits that 
+# changed the image tag; there could be more than one commit affecting any
+# given application, and in thgeory we might see multiple applications changed
+# by a given commit. We're going to take the first one to use in the branch
+# name and PR text further down because it's an unlikely case: in general, 
+# there will only be one application changed. Complex cases will probably need
+# a manually-created PR rather than this automated one . . . 
+
 # Pick up the first application name as the branch and PR name
 export applicationName=$(echo commits-* | grep commits-for- | head -n 1 | sed 's/commits-for-//g')
 if [ "$applicationName" == "" ]; then
