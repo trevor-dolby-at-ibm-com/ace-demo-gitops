@@ -6,6 +6,14 @@ on:
   push:
     branches: [ main ]
     paths:
+      # This will trigger on any file with "dev" in the path at any level
+      # and means we won't get invoked for all file changes. Filtering is
+      # still needed in the scripts to make sure an image tag has actually 
+      # changed, but the filter stops actions being runn too often when 
+      # there's nothing to do for the dev environment.
+      #
+      # See https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#using-filters
+      # for more details.
       - '**dev**.yaml'
 
   # Allows you to run this workflow manually from the Actions tab
