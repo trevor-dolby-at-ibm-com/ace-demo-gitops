@@ -29,11 +29,11 @@ else
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
   echo "Updated on $DATE" > ${TOPDIR}/pr-body.txt
-  echo "########################################################################" >> ${TOPDIR}/pr-body.txt
+  echo "***" >> ${TOPDIR}/pr-body.txt
   echo "Latest action run:" >> ${TOPDIR}/pr-body.txt
   echo "${GITHUB_WORKFLOW} (number ${GITHUB_RUN_NUMBER})" >> ${TOPDIR}/pr-body.txt
   echo "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"  >> ${TOPDIR}/pr-body.txt
-  echo "########################################################################" >> ${TOPDIR}/pr-body.txt
+  echo "***" >> ${TOPDIR}/pr-body.txt
   export COMMITFILES=$(cd ${TOPDIR} && find * -type f -maxdepth 1 -name "commits-for-*" -print)
   for commitFile in $COMMITFILES; do
     # Make sure there's at least one match
@@ -43,7 +43,7 @@ else
     export applicationName=$(echo $commitFile | sed "s|commits-for-||g")
     echo "Original source commits for ${applicationName}:" >> ${TOPDIR}/pr-body.txt
     cat ${TOPDIR}/${commitFile} >> ${TOPDIR}/pr-body.txt
-    echo "########################################################################" >> ${TOPDIR}/pr-body.txt
+    echo "***" >> ${TOPDIR}/pr-body.txt
   done
   #cat ${TOPDIR}/pr-body.txt
   #git status
