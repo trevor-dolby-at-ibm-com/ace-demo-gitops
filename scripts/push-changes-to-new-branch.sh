@@ -28,7 +28,7 @@ else
   echo "#     Generated files changed - creating and pushing git commit"
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
-  echo "Updated on $DATE" > pr-body.txt
+  echo "Updated on $DATE" > ${TOPDIR}/pr-body.txt
   export COMMITFILES=$(cd ${TOPDIR} && find * -type f -maxdepth 1 -name "commits-for-*" -print)
   for commitFile in $COMMITFILES; do
     # Make sure there's at least one match
@@ -41,7 +41,7 @@ else
     echo "" >> ${TOPDIR}/pr-body.txt
   done
   cat ${TOPDIR}/pr-body.txt
-  git status
+  #git status
   git commit -s -m "$MSG"
   git push origin $DEST_BRANCH_NAME
 
@@ -49,6 +49,6 @@ else
   echo "#     Creating or updating PR"
   echo "#    #######################################################################"
   gh pr list
-  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "`cat pr-body.txt`"  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "`cat pr-body.txt`"
+  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"
 fi
 

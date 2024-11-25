@@ -7,7 +7,7 @@ resources:
 images:
   - name: image-placeholder
     newName: tdolby/experimental
-    newTag: tea-github-action-crane-20241122004459-050e42c
+    newTag: tea-github-action-crane-20241122004459-050e42d
 
 components:
   - ../../variants/plaintext
