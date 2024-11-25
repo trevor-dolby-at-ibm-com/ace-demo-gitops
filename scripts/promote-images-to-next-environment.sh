@@ -41,13 +41,14 @@ for yamlFile in $YAMLFILES; do
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
     export destEnvYamlDir="$(dirname ${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath})"
     export destEnvYamlFile="${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath}"
+    export srcDestEnvYamlFile="${parentDirPath}/${destEnv}/${modifiedFilePath}"
     echo "#      #######################################################################"
     echo "#       Changing image reference for ${applicationName}"
     echo "#       to ${imageName}:${imageTag}"
     echo "#       in $destEnvYamlFile"
     echo "#      #######################################################################"
     mkdir -p ${destEnvYamlDir}
-    cp ${yamlFile} ${destEnvYamlFile}
+    cp ${srcDestEnvYamlFile} ${destEnvYamlFile}
     echo "Previous image in ${destEnvYamlFile}:"
     yq '.images[0]' $destEnvYamlFile
     set -e
