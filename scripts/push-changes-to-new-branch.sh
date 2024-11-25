@@ -37,7 +37,7 @@ else
 
     export imageTag=$(yq '.images[0].newTag' ${yamlFile})
     export applicationName=$(echo $commitFile | sed "s|commits-for-||g")
-    echo "Commits for ${applicationName}:" >> ${TOPDIR}/pr-body.txt
+    echo "Original source commits for ${applicationName}:" >> ${TOPDIR}/pr-body.txt
     cat ${TOPDIR}/${commitFile} >> ${TOPDIR}/pr-body.txt
     echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   done
