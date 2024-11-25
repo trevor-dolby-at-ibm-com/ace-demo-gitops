@@ -29,6 +29,7 @@ else
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
   echo "Updated on $DATE" > ${TOPDIR}/pr-body.txt
+  echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   export COMMITFILES=$(cd ${TOPDIR} && find * -type f -maxdepth 1 -name "commits-for-*" -print)
   for commitFile in $COMMITFILES; do
     # Make sure there's at least one match
@@ -38,7 +39,7 @@ else
     export applicationName=$(echo $commitFile | sed "s|commits-for-||g")
     echo "Commits for ${applicationName}:" >> ${TOPDIR}/pr-body.txt
     cat ${TOPDIR}/${commitFile} >> ${TOPDIR}/pr-body.txt
-    echo "" >> ${TOPDIR}/pr-body.txt
+    echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   done
   cat ${TOPDIR}/pr-body.txt
   #git status
