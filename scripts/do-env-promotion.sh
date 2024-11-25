@@ -47,7 +47,9 @@ if [ "$applicationName" == "" ]; then
   exit 0
 fi 
 
-
+# Now we have a valid application name, create the new branch and then copy in
+# the changed files (created by scan-commits-for-image-changes.sh) to the newly-
+# cloned branch.
 export BRANCH_NAME=${GITHUB_HEAD_REF}
 if [ "$BRANCH_NAME" == "" ]; then
   export BRANCH_NAME="$GITHUB_REF_NAME"
