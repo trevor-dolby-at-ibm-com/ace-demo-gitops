@@ -23,13 +23,13 @@ git config --global user.name "Trevor Dolby (automation)"
 git config --global --add --bool push.autoSetupRemote true
 
 echo "#  #######################################################################"
-echo "#   Calling scan-commits-for-image-changes.sh"
+echo "#   Calling 02-scan-commits-for-image-changes.sh"
 echo "#     ${sourceEnv} ${destEnv} ${GITHUB_EVENT_PATH} gitops_cd/changed-files"
 echo "#  #######################################################################"
 mkdir -p gitops_cd/changed-files
-scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${GITHUB_EVENT_PATH} gitops_cd/changed-files
+scripts/02-scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${GITHUB_EVENT_PATH} gitops_cd/changed-files
 
-# At this point, the scan-commits-for-image-changes.sh will have created files
+# At this point, the 02-scan-commits-for-image-changes.sh will have created files
 # of the form commits-for-APPNAME that contain the list of git commits that 
 # changed the image tag; there could be more than one commit affecting any
 # given application, and in thgeory we might see multiple applications changed
@@ -48,10 +48,10 @@ if [ "$applicationName" == "" ]; then
 fi 
 
 # Now we have a valid application name, create the new branch and then copy in
-# the changed files (created by scan-commits-for-image-changes.sh) to the newly-
+# the changed files (created by 02-scan-commits-for-image-changes.sh) to the newly-
 # cloned branch. Note that we couldn't clone the repo with the correct branch
-# before calling scan-commits-for-image-changes.sh because we don't know the
-# application name until scan-commits-for-image-changes.sh tells us . . . 
+# before calling 02-scan-commits-for-image-changes.sh because we don't know the
+# application name until 02-scan-commits-for-image-changes.sh tells us . . . 
 export BRANCH_NAME=${GITHUB_HEAD_REF}
 if [ "$BRANCH_NAME" == "" ]; then
   export BRANCH_NAME="$GITHUB_REF_NAME"
@@ -78,7 +78,7 @@ echo "#  #######################################################################
 cd ../..
 
 echo "#  #######################################################################"
-echo "#   Calling push-changes-to-new-branch.sh"
+echo "#   Calling 04-push-changes-to-new-branch.sh"
 echo "#     ${destEnv} gitops_cd/$REPO_NAME"
 echo "#  #######################################################################"
-scripts/push-changes-to-new-branch.sh ${destEnv} gitops_cd/$REPO_NAME
+scripts/04-push-changes-to-new-branch.sh ${destEnv} gitops_cd/$REPO_NAME

@@ -25,7 +25,7 @@ else
     echo "#    #######################################################################"
     echo "#     Checking commit ${commit} for changes to image tags"
     echo "#    #######################################################################"
-    scripts/promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${commit} ${destDirectory}
+    scripts/03-promote-images-to-next-environment.sh ${sourceEnv} ${destEnv} ${commit} ${destDirectory}
   done
 fi
 
