@@ -31,7 +31,7 @@ else
   echo "Updated on $DATE" > ${TOPDIR}/pr-body.txt
   echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   echo "Latest action run:" >> ${TOPDIR}/pr-body.txt
-  echo "${GITHUB_WORKFLOW} #${GITHUB_RUN_NUMBER}" >> ${TOPDIR}/pr-body.txt
+  echo "${GITHUB_WORKFLOW} (number ${GITHUB_RUN_NUMBER})" >> ${TOPDIR}/pr-body.txt
   echo "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"  >> ${TOPDIR}/pr-body.txt
   echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   export COMMITFILES=$(cd ${TOPDIR} && find * -type f -maxdepth 1 -name "commits-for-*" -print)
