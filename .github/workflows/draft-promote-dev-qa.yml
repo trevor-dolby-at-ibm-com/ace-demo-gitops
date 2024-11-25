@@ -40,7 +40,7 @@ jobs:
           echo ${GITHUB_EVENT_PATH} contents
           cat ${GITHUB_EVENT_PATH}
           echo "########################################################################"
-          echo "# Calling scripts/do-env-promotion.sh"
+          echo "# Calling scripts/01-do-env-promotion.sh"
           echo "#   dev-plaintext qa <GITOPS_GH_TOKEN>"
           echo "########################################################################"
-          scripts/do-env-promotion.sh dev-plaintext qa ${{ secrets.GITOPS_GH_TOKEN }}
+          scripts/01-do-env-promotion.sh dev-plaintext qa ${{ secrets.GITOPS_GH_TOKEN }}
