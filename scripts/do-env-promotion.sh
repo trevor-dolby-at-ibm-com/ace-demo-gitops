@@ -49,7 +49,7 @@ fi
 
 # Now we have a valid application name, create the new branch and then copy in
 # the changed files (created by scan-commits-for-image-changes.sh) to the newly-
-# cloned branch. Note that we cound't clone the repo with the correct branch
+# cloned branch. Note that we couldn't clone the repo with the correct branch
 # before calling scan-commits-for-image-changes.sh because we don't know the
 # application name until scan-commits-for-image-changes.sh tells us . . . 
 export BRANCH_NAME=${GITHUB_HEAD_REF}
