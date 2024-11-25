@@ -53,6 +53,8 @@ for yamlFile in $YAMLFILES; do
     yq -i '.images[0].newTag = strenv(imageTag)' $destEnvYamlFile
     set +x
     set +e
+    # Used later to populate the PR comment
+    echo "${imageName}:${imageTag}" >> commits-for-${applicationName}.txt
   fi
 done
 
