@@ -55,7 +55,8 @@ git clone https://github.com/${GITHUB_REPOSITORY}
 cd $REPO_NAME
 git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
 git pull
-( cd ../../gitops_cd/changed-files && tar -cf - *) | tar -xvf -
+# Avoid changing the directory permissions by copying only the files
+( cd ../../gitops_cd/changed-files && ( find * -type f -print | xargs tar -cf - ) ) | tar -xvf -
 cd ../..
 
 echo "#  #######################################################################"
