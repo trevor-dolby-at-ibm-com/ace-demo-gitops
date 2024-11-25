@@ -48,6 +48,6 @@ else
   echo "#     Creating or updating PR"
   echo "#    #######################################################################"
   gh pr list
-  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body `cat pr-body.txt`  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"
+  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "`cat pr-body.txt`"  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "Updated on $DATE"
 fi
 
