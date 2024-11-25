@@ -58,7 +58,7 @@ for yamlFile in $YAMLFILES; do
     set +x
     set +e
     # Used later to populate the PR comment
-    echo "${gitCommit}: ${imageName}:${imageTag}" >> commits-for-${applicationName}
+    echo "${gitCommit}" >> commits-for-${applicationName}
   fi
 done
 
