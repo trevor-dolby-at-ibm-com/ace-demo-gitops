@@ -28,6 +28,9 @@ else
   echo "#     Generated files changed - creating and pushing git commit"
   echo "#     \"$MSG\" to branch $DEST_BRANCH_NAME"
   echo "#    #######################################################################"
+  # 
+  # This next block creates a formatted PR body message
+  # 
   echo "Updated on $DATE" > ${TOPDIR}/pr-body.txt
   echo "***" >> ${TOPDIR}/pr-body.txt
   echo "Latest action run:" >> ${TOPDIR}/pr-body.txt
@@ -45,8 +48,9 @@ else
     cat ${TOPDIR}/${commitFile} >> ${TOPDIR}/pr-body.txt
     echo "***" >> ${TOPDIR}/pr-body.txt
   done
-  #cat ${TOPDIR}/pr-body.txt
-  #git status
+  # 
+  # Now we have the formatted PR body, we can push the changes and create/edit the PR.
+  # 
   git commit -s -m "$MSG"
   git push origin $DEST_BRANCH_NAME
 
