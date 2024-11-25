@@ -32,8 +32,10 @@ scripts/scan-commits-for-image-changes.sh ${sourceEnv} ${destEnv} ${GITHUB_EVENT
 # Pick up the first application name as the branch and PR name
 export applicationName=$(echo commits-* | grep commits-for- | head -n 1 | sed 's/commits-for-//g')
 if [ "$applicationName" == "" ]; then
-   echo "No changed applications found"
-   exit 0
+  echo "#  #######################################################################"
+  echo "#  No changed applications found"
+  echo "#  #######################################################################"
+  exit 0
 fi 
 
 
@@ -55,6 +57,9 @@ git clone https://github.com/${GITHUB_REPOSITORY}
 cd $REPO_NAME
 git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
 git pull
+echo "#  #######################################################################"
+echo "#  Copying in changed files"
+echo "#  #######################################################################"
 # Avoid changing the directory permissions by copying only the files
 ( cd ../../gitops_cd/changed-files && ( find * -type f -print | xargs tar -cf - ) ) | tar -xvf -
 cd ../..

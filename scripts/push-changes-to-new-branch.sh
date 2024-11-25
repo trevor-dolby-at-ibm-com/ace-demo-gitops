@@ -41,7 +41,7 @@ else
     cat ${TOPDIR}/${commitFile} >> ${TOPDIR}/pr-body.txt
     echo "########################################################################" >> ${TOPDIR}/pr-body.txt
   done
-  cat ${TOPDIR}/pr-body.txt
+  #cat ${TOPDIR}/pr-body.txt
   #git status
   git commit -s -m "$MSG"
   git push origin $DEST_BRANCH_NAME
