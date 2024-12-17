@@ -7,9 +7,7 @@ spec:
   generators:
   - list:
       elements:
-      - namespace: dev-secure
       - namespace: dev-plaintext
-      - namespace: qa
   template:
     metadata:
       name: '{{namespace}}-tea'
@@ -17,7 +15,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
-        targetRevision: HEAD
+        targetRevision: ignore-secret-values
         path: tea-ace-demo/envs//{{namespace}}
       destination:
         server: https://kubernetes.default.svc

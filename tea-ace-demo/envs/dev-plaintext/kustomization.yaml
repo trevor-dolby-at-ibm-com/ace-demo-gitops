@@ -12,7 +12,7 @@ images:
 components:
   - ../../variants/plaintext
 
-patchesStrategicMerge:
-- deployment.yaml
+#patchesStrategicMerge:
+#- deployment.yaml
 #- version.yaml
 
