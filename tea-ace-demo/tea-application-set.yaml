@@ -32,7 +32,9 @@ spec:
       ignoreDifferences:
         - kind: Secret
           group: "*"
-#          jsonPointers:
-#          - /data
+          jsonPointers:
+          - '/data/field-that-argocd-should-not-track'
+          - '/data/other-field-that-argocd-should-not-track'
           jqPathExpressions:
-            - '.data | keys[] | select(. != "field-for-argocd-to-track")'
+#            - '.data | keys | map(select(. != "field-for-argocd-to-track"))'
+            - '.data | keys[] | select(. != "field_for_argocd_to_track")'
