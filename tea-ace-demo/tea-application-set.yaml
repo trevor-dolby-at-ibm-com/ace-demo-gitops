@@ -20,3 +20,19 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: tea-{{namespace}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - ServerSideApply=true
+          - Validate=false
+          - RespectIgnoreDifferences=true
+      ignoreDifferences:
+        - kind: Secret
+          group: "*"
+#          jsonPointers:
+#          - /data
+          jqPathExpressions:
+            - '.data | keys[] | select(. != "field-for-argocd-to-track")'
