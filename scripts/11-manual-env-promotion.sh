@@ -37,6 +37,7 @@ echo "#   Cloning a new copy of the repo using the correct credentials"
 echo "#   Repo    ${GITHUB_REPOSITORY}"
 echo "#   Branch  ${DEST_BRANCH_NAME}"
 echo "#  #######################################################################"
+mkdir -p gitops_cd
 echo $ghToken | gh auth login --with-token
 gh auth setup-git
 cd gitops_cd
