@@ -2,7 +2,7 @@ name: tea-ace-demo dev-to-qa manual promote
 
 # Controls when the action will run. 
 on:
-  push:
+  #push:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -31,3 +31,4 @@ jobs:
           echo "#   tea-ace-demo dev-plaintext qa <GITOPS_GH_TOKEN>"
           echo "########################################################################"
           scripts/11-manual-env-promotion.sh tea-ace-demo dev-plaintext qa ${{ secrets.GITOPS_GH_TOKEN }}
+
