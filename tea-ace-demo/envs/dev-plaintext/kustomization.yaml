@@ -4,10 +4,10 @@ kind: Kustomization
 resources:
 - ../../base
 
-#images:
-#  - name: image-placeholder
-#    newName: tdolby/experimental
-#    newTag: tea-github-action-crane-20241122004459-050e440
+images:
+  - name: image-placeholder
+    newName: tdolby/experimental
+    newTag: tea-github-action-crane-20241122004459-050e440
 
 #components:
 #  - ../../variants/plaintext
