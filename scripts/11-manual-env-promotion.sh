@@ -45,14 +45,14 @@ git clone https://github.com/${GITHUB_REPOSITORY}
 cd $REPO_NAME
 git checkout ${DEST_BRANCH_NAME} 2>/dev/null || git checkout -b ${DEST_BRANCH_NAME}
 git pull
-echo "#  #######################################################################"
-echo "#  Calling ../../scripts/13-promote-image-to-next-environment.sh"
-echo "#    ${applicationName} ${sourceEnv} ${destEnv}"
-echo "#  #######################################################################"
-../../scripts/13-promote-image-to-next-environment.sh ${applicationName} ${sourceEnv} ${destEnv}
-
 # Reset working directory to original
 cd ../..
+echo "#  #######################################################################"
+echo "#  Calling ../../scripts/13-promote-image-to-next-environment.sh"
+echo "#    ${applicationName} ${sourceEnv} ${destEnv} gitops_cd/$REPO_NAME"
+echo "#  #######################################################################"
+scripts/13-promote-image-to-next-environment.sh ${applicationName} ${sourceEnv} ${destEnv} gitops_cd/$REPO_NAME
+
 
 echo "#  #######################################################################"
 echo "#   Calling 04-push-changes-to-new-branch.sh"

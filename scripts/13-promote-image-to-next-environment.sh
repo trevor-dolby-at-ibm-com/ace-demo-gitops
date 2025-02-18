@@ -4,6 +4,7 @@
 export applicationName=$1
 export sourceEnv=$2
 export destEnv=$3
+export destDirectory=$4
 
 if [ "$applicationName" == "" ]; then
    echo "Need valid application name"
@@ -37,8 +38,8 @@ for yamlFile in $YAMLFILES; do
     export applicationName=$(echo $yamlFile | awk '{split($0,a,"/"); print a[1]}')
     export parentDirPath=$(echo $(dirname $yamlFile) | sed "s|/${sourceEnv}|\n|g" | head -n 1)
     export modifiedFilePath=$(echo $yamlFile | sed "s|/${sourceEnv}/|\n|g" | tail -n 1)
-    export destEnvYamlDir="$(dirname ${parentDirPath}/${destEnv}/${modifiedFilePath})"
-    export destEnvYamlFile="${parentDirPath}/${destEnv}/${modifiedFilePath}"
+    export destEnvYamlDir="$(dirname ${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath})"
+    export destEnvYamlFile="${destDirectory}/${parentDirPath}/${destEnv}/${modifiedFilePath}"
     export srcDestEnvYamlFile="${parentDirPath}/${destEnv}/${modifiedFilePath}"
     echo "#      #######################################################################"
     echo "#       Changing image reference for ${applicationName}"
