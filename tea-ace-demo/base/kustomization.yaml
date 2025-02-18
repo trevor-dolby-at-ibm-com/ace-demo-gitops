@@ -4,4 +4,5 @@ resources:
 - deployment.yaml
 - service.yaml
 - route.yaml
-
+#- first-secret.yaml
+#- second-secret.yaml

@@ -7,9 +7,7 @@ spec:
   generators:
   - list:
       elements:
-      - namespace: dev-secure
       - namespace: dev-plaintext
-      - namespace: qa
   template:
     metadata:
       name: '{{namespace}}-tea'
@@ -17,8 +15,27 @@ spec:
       project: default
       source:
         repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
+        #targetRevision: ignore-secret-values
         targetRevision: HEAD
         path: tea-ace-demo/envs//{{namespace}}
       destination:
         server: https://kubernetes.default.svc
         namespace: tea-{{namespace}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - ServerSideApply=true
+          - Validate=false
+          - RespectIgnoreDifferences=true
+      ignoreDifferences:
+        - kind: Secret
+          group: "*"
+          jsonPointers:
+            - /data
+#            - /data/other-field-that-argocd-should-not-track
+          jqPathExpressions:
+            - '.data | keys[] | select(. != "field_for_argocd_to_track")'
+#            - '.data | keys | map(select(. != "field-for-argocd-to-track"))'
