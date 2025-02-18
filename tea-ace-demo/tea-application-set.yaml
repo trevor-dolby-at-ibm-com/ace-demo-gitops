@@ -15,7 +15,8 @@ spec:
       project: default
       source:
         repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
-        targetRevision: ignore-secret-values
+        #targetRevision: ignore-secret-values
+        targetRevision: HEAD
         path: tea-ace-demo/envs//{{namespace}}
       destination:
         server: https://kubernetes.default.svc
