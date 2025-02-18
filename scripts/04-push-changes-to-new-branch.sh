@@ -3,6 +3,7 @@
 
 export destEnv=$1
 export destDirectory=$2
+export promoteType=$3
 
 if [ "$destEnv" == "" ]; then
    echo "Need valid dest env"
@@ -58,5 +59,5 @@ else
   echo "#     Creating or updating PR"
   echo "#    #######################################################################"
   gh pr list
-  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo automated promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"  --draft || gh pr edit --base main --title "tea-ace-demo automated promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"
+  gh pr create --base main --head $DEST_BRANCH_NAME --title "tea-ace-demo ${promoteType} promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"  --draft || gh pr edit --base main --title "tea-ace-demo ${promoteType} promote to $destEnv" --body "`cat ${TOPDIR}/pr-body.txt`"
 fi

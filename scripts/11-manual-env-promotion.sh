@@ -58,4 +58,4 @@ echo "#  #######################################################################
 echo "#   Calling 04-push-changes-to-new-branch.sh"
 echo "#     ${destEnv} gitops_cd/$REPO_NAME"
 echo "#  #######################################################################"
-scripts/04-push-changes-to-new-branch.sh ${destEnv} gitops_cd/$REPO_NAME
+scripts/04-push-changes-to-new-branch.sh ${destEnv} gitops_cd/$REPO_NAME manual
