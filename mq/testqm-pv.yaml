@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: testqm-data-pv
+spec:
+  capacity:
+    storage: 2Gi
+  nfs:
+    server: 192.168.1.70
+    path: /pv/rwx01
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: no-provisioner-sc

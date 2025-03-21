@@ -1,0 +1,20 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: testqm
+spec:
+  license:
+    accept: true
+    license: L-QYVA-B365MB
+    use: Production
+  queueManager:
+    storage:
+      queueManager:
+        # Fails because the class does not exist.
+        #class: invalidSCtest
+        # PV and PVC must be created before the QM will start.
+        class: no-provisioner-sc
+        type: persistent-claim
+  version: 9.4.1.0-r2
+  web:
+    enabled: false

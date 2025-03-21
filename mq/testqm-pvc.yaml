@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-testqm-ibm-mq-0
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+  volumeName: testqm-data-pv
+  volumeMode: Filesystem
+  storageClassName: no-provisioner-sc
