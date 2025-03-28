@@ -27,3 +27,12 @@ in the PV and PVC definitions and thereby avoid the need for creating the no-pro
 MQ QM is created first (before the PVC) then it will provision storage using the default storage class for
 the cluster (if any). This may not be desirable.
 
+## Useful commands
+
+```
+find separateclaimsqm-* -exec oc delete -f {} ";"
+find separateclaimsqm-* -exec oc apply -f {} ";"
+
+oc apply -f separateclaimsqm.yaml
+oc delete -f separateclaimsqm.yaml
+```
