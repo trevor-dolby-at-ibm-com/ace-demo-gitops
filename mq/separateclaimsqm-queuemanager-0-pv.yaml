@@ -7,7 +7,7 @@ spec:
     storage: 2Gi
   nfs:
     server: 192.168.1.70
-    path: /pv/rwx06
+    path: /pv/rwx08
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
