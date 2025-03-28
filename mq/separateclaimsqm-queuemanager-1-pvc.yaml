@@ -1,0 +1,18 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-separateclaimsqm-ibm-mq-1
+  labels:
+    app.kubernetes.io/component: integration
+    app.kubernetes.io/instance: separateclaimsqm
+    app.kubernetes.io/managed-by: operator
+    app.kubernetes.io/name: ibm-mq
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeName: separateclaimsqm-data-1-pv
+  volumeMode: Filesystem
+  storageClassName: no-provisioner-sc

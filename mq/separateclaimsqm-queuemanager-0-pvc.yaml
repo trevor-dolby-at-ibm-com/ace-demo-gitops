@@ -13,6 +13,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  volumeName: separateclaimsqm-data-pv
+  volumeName: separateclaimsqm-data-0-pv
   volumeMode: Filesystem
   storageClassName: no-provisioner-sc

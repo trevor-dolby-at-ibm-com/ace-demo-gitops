@@ -1,13 +1,13 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: separateclaimsqm-data-pv
+  name: separateclaimsqm-data-0-pv
 spec:
   capacity:
     storage: 2Gi
   nfs:
     server: 192.168.1.70
-    path: /pv/rwx03
+    path: /pv/rwx06
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
