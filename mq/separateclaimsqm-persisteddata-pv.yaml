@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: separateclaimsqm-persisted-data-pv
+spec:
+  capacity:
+    storage: 2Gi
+  nfs:
+    server: 192.168.1.70
+    path: /pv/rwx02
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Delete
+  volumeMode: Filesystem
+  storageClassName: no-provisioner-sc

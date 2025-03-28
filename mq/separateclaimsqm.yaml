@@ -1,0 +1,19 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: separateclaimsqm
+spec:
+  license:
+    accept: true
+    license: L-QYVA-B365MB
+    use: Production
+  queueManager:
+    availability:
+      type: MultiInstance
+    storage:
+      defaultClass: no-provisioner-sc
+      queueManager:
+        type: persistent-claim
+  version: 9.4.1.0-r2
+  web:
+    enabled: false
