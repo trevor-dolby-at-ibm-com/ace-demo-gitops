@@ -3,8 +3,7 @@ kind: IntegrationRuntime
 metadata:
   annotations:
     appconnect.ibm.com/updating: 'false'
-  name: tea-github-action
-  namespace: cp4i
+  name: tea-ace-demo
   labels:
     backup.appconnect.ibm.com/component: integrationruntime
 spec:
