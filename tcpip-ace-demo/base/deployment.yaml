@@ -1,28 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tea-ace-demo
+  name: tcpip-ace-demo
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: tea-ace-demo
+      app: tcpip-ace-demo
   template:
     metadata:
       labels:
-        app: tea-ace-demo
+        app: tcpip-ace-demo
     spec:
-      volumes:
-      - name: secret-volume-2
-        secret:
-          secretName: jdbc-secret
       containers:
       - image: >-
           image-placeholder
-        name: tea-ace-demo
+        name: tcpip-ace-demo
+        env:
+        - name: ENV
+          value: "qa"
+        - name: LICENSE
+          value: "accept"
         ports:
         - containerPort: 7800
-        volumeMounts:
-        - name: secret-volume-2
-          mountPath: /var/run/secrets/jdbc
+        - containerPort: 12345

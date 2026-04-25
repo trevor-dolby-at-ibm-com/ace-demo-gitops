@@ -41,3 +41,8 @@ spec:
           - Validate=false
           - RespectIgnoreDifferences=true
           - CreateNamespace=true
+      ignoreDifferences:
+        - group: appconnect.ibm.com
+          kind: IntegrationRuntime
+          jqPathExpressions:
+            - '.spec.configurations[] | select(endswith("-adminssl"))'
