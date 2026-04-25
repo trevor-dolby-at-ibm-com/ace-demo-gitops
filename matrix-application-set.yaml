@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: matrix-application-set
+  namespace: openshift-gitops
+spec:
+  generators:
+    # matrix 'parent' generator
+    - matrix:
+        generators:
+          # git generator, 'child' #1
+          - git:
+              repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
+              revision: tea-ir-plus-tcpip
+              directories:
+                - path: '*-ace-demo'
+          # list generator, 'child' #2
+          - list:
+              elements:
+                - namespace: dev
+                - namespace: qa
+  template:
+    metadata:
+      name: 'demo-{{path}}-{{namespace}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
+        targetRevision: tea-ir-plus-tcpip
+        path: '{{path}}/envs//{{namespace}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: demo-{{namespace}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - ServerSideApply=true
+          - Validate=false
+          - RespectIgnoreDifferences=true
+          - CreateNamespace=true
