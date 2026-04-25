@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - teajdbc-policy.yaml
 
 images:
   - name: image-placeholder

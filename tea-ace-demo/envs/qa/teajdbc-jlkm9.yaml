@@ -1,0 +1,28 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "teajdbc-jlkm9",
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "teajdbc-jlkm9",
+        "labels": {
+          "app.kubernetes.io/component": "configuration",
+          "app.kubernetes.io/instance": "teajdbc",
+          "app.kubernetes.io/managed-by": "ibm-appconnect",
+          "app.kubernetes.io/name": "teajdbc",
+          "appconnect.ibm.com/kind": "Configuration",
+          "backup.appconnect.ibm.com/component": "configuration",
+          "bcdr-candidate": "t",
+          "release": "teajdbc"
+        }
+      },
+      "type": "Opaque"
+    },
+    "encryptedData": {
+      "configuration": "AgAU3L4xdKeb999DbibNaRQdPoNrkpU9teaSUXDZ3UCfbwmqaKnbhDc7BQyGkRUYH7iCaqnI78wRIg4Hhh5uiES+g0GG/8ptDIP6lNu+KYBIQLECy+thiHyKCHGvRojTttO8oHlDirMbKKDCPKwbAtJGx4xzI7rqYwcBBX68GbQwLo2l11Kz5ivnXx3m0YEEvgTRpVJcLLb+Ru4lar2mANkJaLHNOd3Am/p5+dAzPWazZu3OOsRatTGzZNT4VRZFWSeur4+axmyq8QVZE+1qpqX++QIivGXJ0Jzkud9tt3/gsn25zr3O1nVnbJ72bwK/liLX8+utrLmBICWMgzoqcTqSUUQ72S5iRexOudVg1H+4VRPtBYBurSnq7ac8V16Yx1xr9jm7lJaxK6WBCLAEBaxt7TjUfEfIZuuaGRJAgZVAzuJQz8c4JCx8LpreVg79Jhkql/RClvIRJdvf4fPapHQFJLRQD6wrDBdEzK+lCzPprDUBiDLr/8Xd7bBHkeBYj593zgpbH1YQ/bH6WmTgeqsfOsyUJbTHJ1Uicpoyq7YsAcEypipSLnzvmu/HlQdOvq1ph2rheWHGWiWD8OPQA9HLQsHeJeAze1IEuHexb4QDU/GjIuNfNXm/oAZxW5hHCxp6tZM2EzioPeMDXIZeYBoeiz+pNPd5VGCvw6bPJouOZj7U0/LHnPURCyCCYoS06eEdk1fvBmAGJddSurEhAHK11ZSEe8ccAr3k6ikqqqgANNmHjg=="
+    }
+  }
+}

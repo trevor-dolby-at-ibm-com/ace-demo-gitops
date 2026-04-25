@@ -1,0 +1,12 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  labels:
+    backup.appconnect.ibm.com/component: configuration
+    bcdr-candidate: t
+    component-name: appconnect
+  name: default-policy
+spec:
+  contents: RGVmYXVsdHM6DQogIHBvbGljeVByb2plY3Q6ICdDVFBvbGljaWVzJw0K
+  type: serverconf
+  version: 12.0.12-r22

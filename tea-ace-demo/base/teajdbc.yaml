@@ -1,0 +1,12 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Configuration
+metadata:
+  name: teajdbc
+  labels:
+    backup.appconnect.ibm.com/component: configuration
+    bcdr-candidate: t
+    component-name: appconnect
+spec:
+  secretName: teajdbc-jlkm9
+  type: setdbparms
+  version: 12.0.12-r22

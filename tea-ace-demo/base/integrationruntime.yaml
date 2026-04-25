@@ -10,7 +10,7 @@ spec:
   barURL: []
   configurations:
     - teajdbc
-    - tea-jdbc-policy
+    - teajdbc-policy
     - default-policy
   flowType:
     toolkitFlow: true
