@@ -1,29 +1,22 @@
-{
-  "kind": "SealedSecret",
-  "apiVersion": "bitnami.com/v1alpha1",
-  "metadata": {
-    "name": "teajdbc-jlkm9",
-  },
-  "spec": {
-    "template": {
-      "metadata": {
-        "name": "teajdbc-jlkm9",
-        "namespace": "demo-dev",
-        "labels": {
-          "app.kubernetes.io/component": "configuration",
-          "app.kubernetes.io/instance": "teajdbc",
-          "app.kubernetes.io/managed-by": "ibm-appconnect",
-          "app.kubernetes.io/name": "teajdbc",
-          "appconnect.ibm.com/kind": "Configuration",
-          "backup.appconnect.ibm.com/component": "configuration",
-          "bcdr-candidate": "t",
-          "release": "teajdbc"
-        }
-      },
-      "type": "Opaque"
-    },
-    "encryptedData": {
-      "configuration": "AgAU3L4xdKeb999DbibNaRQdPoNrkpU9teaSUXDZ3UCfbwmqaKnbhDc7BQyGkRUYH7iCaqnI78wRIg4Hhh5uiES+g0GG/8ptDIP6lNu+KYBIQLECy+thiHyKCHGvRojTttO8oHlDirMbKKDCPKwbAtJGx4xzI7rqYwcBBX68GbQwLo2l11Kz5ivnXx3m0YEEvgTRpVJcLLb+Ru4lar2mANkJaLHNOd3Am/p5+dAzPWazZu3OOsRatTGzZNT4VRZFWSeur4+axmyq8QVZE+1qpqX++QIivGXJ0Jzkud9tt3/gsn25zr3O1nVnbJ72bwK/liLX8+utrLmBICWMgzoqcTqSUUQ72S5iRexOudVg1H+4VRPtBYBurSnq7ac8V16Yx1xr9jm7lJaxK6WBCLAEBaxt7TjUfEfIZuuaGRJAgZVAzuJQz8c4JCx8LpreVg79Jhkql/RClvIRJdvf4fPapHQFJLRQD6wrDBdEzK+lCzPprDUBiDLr/8Xd7bBHkeBYj593zgpbH1YQ/bH6WmTgeqsfOsyUJbTHJ1Uicpoyq7YsAcEypipSLnzvmu/HlQdOvq1ph2rheWHGWiWD8OPQA9HLQsHeJeAze1IEuHexb4QDU/GjIuNfNXm/oAZxW5hHCxp6tZM2EzioPeMDXIZeYBoeiz+pNPd5VGCvw6bPJouOZj7U0/LHnPURCyCCYoS06eEdk1fvBmAGJddSurEhAHK11ZSEe8ccAr3k6ikqqqgANNmHjg=="
-    }
-  }
-}
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: teajdbc-jlkm9
+spec:
+  encryptedData:
+    configuration: AgAWk8RxTrqGtGduScCZvtO/HMbfT+4CmhfOZgB9sqACkvscQ4urUYJ7F8hG1ZD+K/V6jY4A3SGlcOqkvLi2w5IcMdJTuwt33YsQc1s0pIcelJWc8s7zOr3qO2qtQz40gckkrH9abqVUE9VPu19r3p099RM+gGCdGZxn0u95HXV0MhP9rGeC3K+Rwy7E0l5SMYpZD8WLUhaN3+gw6/QFgb/xxcp3Lh/pkswxkkPtByprVHQRfPpL3wD5z6GsWhJIXCq0KVlkLzO0OS+bnBQChQWc2Wjg9+fxse8rbnqRBKM8C/1lGFQLQ6mYwUA/Z0sY+8vPIpEqJOIFUqqpRTwYqGIF4XFux0mBEjuCNKW1uD//3fBDRs91ynE2IDDjp2Rosr/hKuYDjN57YPFqkNQYmbJjgNc4LumjVYC5YhBukI0RXgwozJSpN2iv1rvZNgfOPG1ZZYJheDh7d/Dl6PpxBqhdhfb+D5BY4s2jQpyL5QdQjx+ft82rwvfiHn4tVE76B8iVBA/1bi8xJsSgWFx/1N4b17792Ky/OiIPY36D+2JB1Er3z7VXjZGo7YucLUikuWbalAxnajH5YUKOIgZVX9HvZmXzhRbJvPca1QhII36H3p2GsW0maVIPxkpqEWz91aYZJc/ptW0RBbNt63gnKxr5ejH9p5VFDjZWtko/1aJCcj0tcEQzWpgoSWeNISm27Ncnv1n54sdmGfg5opGGK3tU+c8zSGI7SJgJ/1ULz1NhM9xRWA==
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: configuration
+        app.kubernetes.io/instance: teajdbc
+        app.kubernetes.io/managed-by: ibm-appconnect
+        app.kubernetes.io/name: teajdbc
+        appconnect.ibm.com/kind: Configuration
+        backup.appconnect.ibm.com/component: configuration
+        bcdr-candidate: t
+        release: teajdbc
+      name: teajdbc-jlkm9
+      namespace: demo-dev
+    type: Opaque
