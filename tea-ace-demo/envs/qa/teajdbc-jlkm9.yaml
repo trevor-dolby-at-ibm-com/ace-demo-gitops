@@ -8,6 +8,7 @@
     "template": {
       "metadata": {
         "name": "teajdbc-jlkm9",
+        "namespace": "demo-qa",
         "labels": {
           "app.kubernetes.io/component": "configuration",
           "app.kubernetes.io/instance": "teajdbc",
