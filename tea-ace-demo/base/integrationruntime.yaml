@@ -9,7 +9,6 @@ metadata:
 spec:
   barURL: []
   configurations:
-    - tea-github-action-ir-adminssl
     - teajdbc
     - tea-jdbc-policy
     - default-policy
