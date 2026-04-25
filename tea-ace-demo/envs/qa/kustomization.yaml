@@ -7,5 +7,5 @@ resources:
 images:
   - name: image-placeholder
     newName: docker.io/tdolby/experimental
-    newTag: experimental:tea-github-action-crane-20260424190513-398448d
+    newTag: tea-github-action-crane-20260424190513-398448d
 
