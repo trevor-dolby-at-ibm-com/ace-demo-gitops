@@ -1,0 +1,4 @@
+images:
+  - name: image-placeholder
+    newName: docker.io/tdolby/experimental
+    newTag: tea-github-action-crane-20260424190513-398448d

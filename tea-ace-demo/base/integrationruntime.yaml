@@ -1,8 +1,6 @@
 apiVersion: appconnect.ibm.com/v1beta1
 kind: IntegrationRuntime
 metadata:
-  annotations:
-    appconnect.ibm.com/updating: 'false'
   name: tea-ace-demo
   labels:
     backup.appconnect.ibm.com/component: integrationruntime
