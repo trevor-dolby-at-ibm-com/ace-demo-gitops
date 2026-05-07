@@ -5,4 +5,4 @@ resources:
   - ../../base
   - teajdbc-policy.yaml
   - teajdbc-jlkm9.yaml
-  - version.yaml
+  - ./version
