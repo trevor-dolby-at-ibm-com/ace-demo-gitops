@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tcpip-ace-demo
-  annotations:
-    testvalue: 'testcontent'
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -22,6 +20,8 @@ spec:
         env:
         - name: ENV
           value: "qa"
+        - name: TESTVAR
+          value: "somevalue"
         - name: LICENSE
           value: "accept"
         ports:
