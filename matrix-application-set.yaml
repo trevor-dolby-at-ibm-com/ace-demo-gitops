@@ -27,19 +27,33 @@ spec:
                 - list:
                     elements:
                       - namespace: dev
+                        fakeserver: 'https://api.test1.cluster:6443'
                       - namespace: qa
+                        fakeserver: 'https://api.test2.cluster:6443'
+  goTemplate: true
   template:
     metadata:
-      name: '{{name}}-{{path}}-{{namespace}}'
+      name: '{{.name}}-{{.path.basename}}-{{.namespace}}'
     spec:
       project: default
       source:
+        kustomize:
+          patches:
+            - patch: |-
+                - op: add 
+                  path: /spec/template/spec/containers/0/env/0/name
+                  value: 'CLUSTER_APPS_DNS'
+                - op: add # Likely to be of the form https://api.cluster.host:6443
+                  path: /spec/template/spec/containers/0/env/0/value
+                  value: '{{- $url := urlParse .fakeserver -}}something-else-{{ replace "api." "apps." $url.hostname }}'
+              target:
+                kind: Deployment
         repoURL: https://github.com/trevor-dolby-at-ibm-com/ace-demo-gitops.git
         targetRevision: tea-ir-plus-tcpip
-        path: '{{path}}/envs//{{namespace}}'
+        path: '{{.path.path}}/envs//{{.namespace}}'
       destination:
-        server: '{{server}}'
-        namespace: demo-{{namespace}}
+        server: '{{.server}}'
+        namespace: demo-{{.namespace}}
       syncPolicy:
         automated:
           prune: true

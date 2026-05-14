@@ -18,8 +18,10 @@ spec:
           image-placeholder
         name: tcpip-ace-demo
         env:
+        - name: CLUSTER_APPS_DNS
+          value: "should.be.set.by.application.set"
         - name: ENV
-          value: "qa"
+          value: "dev"
         - name: TESTVAR
           value: "somevalue"
         - name: LICENSE
